@@ -1,0 +1,74 @@
+table {
+	width: 100%;
+	min-width: 72rem;
+	max-width: 100rem;
+	border-collapse: collapse;
+	margin: 1rem 0;
+	box-shadow: 0 0 1rem rgba(51, 102, 153, 0.50);
+	border-top-left-radius: 0.2rem;
+	border-top-right-radius: 0.2rem;
+
+	th,
+	td {
+		padding: 0.5rem;
+		text-align: left;
+	}
+
+	thead > tr {
+		background-color: #336699;
+		color: #ffffff;
+
+		& > th {
+			&:first-of-type {
+				width: 3rem;
+				border-top-left-radius: 0.2rem;
+			}
+			&:nth-of-type(2) {
+				width: 15rem;
+			}
+			&:last-of-type {
+				border-top-right-radius: 0.2rem;
+				line-height: 1.7rem;
+			}
+
+			input {
+				float: right;
+				margin-right: 0.3rem;
+				width: 20rem;
+			}
+		}
+	}
+
+	tbody > tr {
+		border-bottom: thin solid #ddd;
+
+		&:nth-of-type(even) {
+			background-color: #f7f7f7;
+		}
+		&:last-of-type {
+			border-bottom: thin solid #369;
+		}
+
+		th {
+			width: 3rem;
+		}
+		td:first-of-type {
+			width: 15rem;
+		}
+	}
+
+	button {
+		margin-left: 0.3rem;
+
+		&[type=submit] {
+			color: #090;
+		}
+		&[type=reset] {
+			color: #900;
+		}
+	}
+
+	.full-url {
+		width: 34rem;
+	}
+}

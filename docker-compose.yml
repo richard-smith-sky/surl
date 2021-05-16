@@ -1,0 +1,36 @@
+version: "3"
+services:
+  client:
+    image: client-app
+    stdin_open: true
+    ports: 
+      - "3000:3000"
+    networks:
+      - surl-app
+
+  api:
+    image: api-server
+    ports:
+      - "5000:5000"
+    networks:
+      - surl-app
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:4.0-xenial
+    restart: always
+    ports:
+      - "27017:27017"
+    networks:
+      - surl-app
+    volumes:
+      - mongo-data:/data/db
+
+networks:
+  surl-app:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local

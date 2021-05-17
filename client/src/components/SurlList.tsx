@@ -159,7 +159,9 @@ class SurlList extends Component<SurlListProps> {
 								{surls.length > 0 && this.renderTableRows(surls)}
 								{surls.length <= 0 && this.renderNoResults()}
 								<tr>
-									<td />
+									<th>
+										<span className="sr-only">Form row</span>
+									</th>
 									<td />
 									<td>
 										<label htmlFor="fullUrl" className="sr-only">

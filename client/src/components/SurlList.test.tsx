@@ -29,7 +29,7 @@ describe('SurlList', () => {
 		);
 
 		expect(screen.getByRole('table')).toBeDefined();
-		expect(screen.getAllByRole('columnheader')).toHaveLength(5); // 3 top, 2 side
+		expect(screen.getAllByRole('columnheader')).toHaveLength(6); // 3 top, 3 side
 		expect(screen.getAllByRole('row')).toHaveLength(4); // 1 header row, 2 data rows, 1 form row
 	});
 

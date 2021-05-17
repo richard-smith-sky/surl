@@ -1,7 +1,7 @@
 import { createSurl, fetchSurls } from '../api';
 import { FETCH_SURLS, FETCH_SURLS_ERROR, CREATE_SURL, CREATE_SURL_ERROR } from './actionTypes';
 
-export const fetchSurlsAction = () => async (dispatch) => {
+export const fetchSurlsAction = () => async (dispatch: DispatchSurlsType) => {
 	const request = fetchSurls();
 
 	return request.then(
@@ -18,7 +18,7 @@ export const fetchSurlsAction = () => async (dispatch) => {
 	);
 };
 
-export const createSurlAction = (surl) => async (dispatch) => {
+export const createSurlAction = (surl: ISurl) => async (dispatch: Function) => {
 	const request = createSurl(surl);
 
 	return request.then(
@@ -37,14 +37,14 @@ export const createSurlAction = (surl) => async (dispatch) => {
 	);
 };
 
-export const resetSurlAction = () => async (dispatch) => {
+export const resetSurlAction = () => async (dispatch: DispatchSurlType) => {
 	dispatch({
 		type: CREATE_SURL,
 		surl: null
 	});
 };
 
-export const resetSurlErrorAction = () => async (dispatch) => {
+export const resetSurlErrorAction = () => async (dispatch: DispatchSurlType) => {
 	dispatch({
 		type: CREATE_SURL_ERROR,
 		err: null

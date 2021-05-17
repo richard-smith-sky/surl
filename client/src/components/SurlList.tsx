@@ -9,7 +9,7 @@ import { getShortUrl } from '../utils/shortUrl';
 
 import './scss/surlList.scss';
 
-class SurlList extends Component {
+class SurlList extends Component<SurlListProps> {
 	state = {
 		cleanup: null,
 		search: ''
@@ -20,10 +20,11 @@ class SurlList extends Component {
 	}
 
 	componentDidUpdate() {
-		const { surl, surlError } = this.props;
-		const { cleanup } = this.state;
+		const { surl, surlError }: { surl: ISurl; surlError: ISurlError } = this.props;
+		const { cleanup }: { cleanup: Function | null } = this.state;
 
 		if (cleanup && surl && !surlError) {
+			// @ts-ignore: Cannot invoke an object which is possibly 'null'.
 			cleanup();
 			this.setState({
 				cleanup: null
@@ -31,24 +32,24 @@ class SurlList extends Component {
 		}
 	}
 
-	handleChange = ({ target: { id, value } }) => {
+	handleChange = ({ target: { id, value } }: { target: { id: string; value: string } }) => {
 		this.setState({
 			[id]: value
 		});
 	};
 
 	prepareData() {
-		const { search } = this.state;
+		const { search }: { search: string } = this.state;
 		const searchStr = search.toLowerCase();
 
 		return this.props.surls.filter(
-			({ fullUrl, shortUrl }) =>
+			({ fullUrl, shortUrl }: { fullUrl: string; shortUrl: string }) =>
 				fullUrl.toLowerCase().includes(searchStr) || shortUrl.toLowerCase().includes(searchStr)
 		);
 	}
 
 	renderTableHeading() {
-		const { search } = this.state;
+		const { search }: { search: string } = this.state;
 
 		return (
 			<thead>
@@ -57,7 +58,7 @@ class SurlList extends Component {
 					<th>Short URL</th>
 					<th>
 						Full URL
-						<label for="search" className="sr-only">
+						<label htmlFor="search" className="sr-only">
 							Search
 						</label>
 						<input
@@ -74,8 +75,8 @@ class SurlList extends Component {
 		);
 	}
 
-	renderTableRows(surls) {
-		return surls.map(({ fullUrl, shortUrl }, idx) => {
+	renderTableRows(surls: ISurl[]) {
+		return surls.map(({ fullUrl, shortUrl }: { fullUrl: string; shortUrl: string }, idx: number) => {
 			const id = idx + 1;
 			return (
 				<tr key={`surl_${id}`}>
@@ -98,13 +99,17 @@ class SurlList extends Component {
 	renderNoResults() {
 		return (
 			<tr>
-				<td colSpan="3">No short URLS found</td>
+				<td colSpan={3}>No short URLS found</td>
 			</tr>
 		);
 	}
 
-	formSubmit = ({ fullUrl }, { resetForm }) => {
-		const { createSurlAction, resetSurlAction, resetSurlErrorAction } = this.props;
+	formSubmit = ({ fullUrl }: { fullUrl: string }, { resetForm }: { resetForm: Function }) => {
+		const {
+			createSurlAction,
+			resetSurlAction,
+			resetSurlErrorAction
+		}: { createSurlAction: Function; resetSurlAction: Function; resetSurlErrorAction: Function } = this.props;
 
 		const payload = {
 			fullUrl,
@@ -131,8 +136,8 @@ class SurlList extends Component {
 	};
 
 	render() {
-		const surls = this.prepareData();
-		const { surlError } = this.props;
+		const surls: ISurl[] = this.prepareData();
+		const { surlError }: { surlError: ISurlError } = this.props;
 
 		return (
 			<Formik
@@ -157,7 +162,7 @@ class SurlList extends Component {
 									<td />
 									<td />
 									<td>
-										<label for="fullUrl" className="sr-only">
+										<label htmlFor="fullUrl" className="sr-only">
 											Full URL
 										</label>
 										<Field
@@ -190,7 +195,7 @@ class SurlList extends Component {
 	}
 }
 
-const mapStateToProps = ({ surl, surlError, surls }) => {
+const mapStateToProps = ({ surl, surlError, surls }: { surl: ISurl; surlError: ISurlError; surls: ISurl[] }) => {
 	return {
 		surl,
 		surlError,
@@ -198,7 +203,7 @@ const mapStateToProps = ({ surl, surlError, surls }) => {
 	};
 };
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
 	return {
 		...bindActionCreators(
 			{

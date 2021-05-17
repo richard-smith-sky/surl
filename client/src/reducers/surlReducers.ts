@@ -1,11 +1,11 @@
 import { CREATE_SURL, CREATE_SURL_ERROR, FETCH_SURLS, FETCH_SURLS_ERROR } from '../actions/actionTypes';
 
-const surlInitialState = null;
-const surlErrorInitialState = null;
-const surlsInitialState = [];
-const surlsErrorInitialState = null;
+const surlInitialState: string | null = null;
+const surlErrorInitialState: string | null = null;
+const surlsInitialState: ISurl[] = [];
+const surlsErrorInitialState: string | null = null;
 
-const surlReducer = (state = surlInitialState, action) => {
+const surlReducer = (state = surlInitialState, action: ISurlAction) => {
 	switch (action.type) {
 		case CREATE_SURL:
 			return action.surl;
@@ -14,7 +14,7 @@ const surlReducer = (state = surlInitialState, action) => {
 	}
 };
 
-const surlErrorReducer = (state = surlErrorInitialState, action) => {
+const surlErrorReducer = (state = surlErrorInitialState, action: ISurlErrorAction) => {
 	switch (action.type) {
 		case CREATE_SURL_ERROR:
 			return action.err;
@@ -23,7 +23,7 @@ const surlErrorReducer = (state = surlErrorInitialState, action) => {
 	}
 };
 
-const surlsReducer = (state = surlsInitialState, action) => {
+const surlsReducer = (state = surlsInitialState, action: ISurlsAction) => {
 	switch (action.type) {
 		case FETCH_SURLS:
 			return action.surls;
@@ -32,7 +32,7 @@ const surlsReducer = (state = surlsInitialState, action) => {
 	}
 };
 
-const surlsErrorReducer = (state = surlsErrorInitialState, action) => {
+const surlsErrorReducer = (state = surlsErrorInitialState, action: ISurlsErrorAction) => {
 	switch (action.type) {
 		case FETCH_SURLS_ERROR:
 			return action.err;

@@ -5,4 +5,4 @@ const api = axios.create({
 });
 
 export const fetchSurls = () => api.get(`/surls`);
-export const createSurl = (payload) => api.post(`/surl`, payload);
+export const createSurl = (payload: ISurl) => api.post(`/surl`, payload);

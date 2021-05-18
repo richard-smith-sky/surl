@@ -21,9 +21,9 @@ It’s up to you how to layout and style the frontend, it doesn’t need to win 
 Get the task done as soon as you can, and upload the code onto a public git repo somewhere.
 
 ## Pre-requisites
-A recent version of Docker is installed on you machine.
+A recent version of Docker is installed on your computer. (I'm using Docker Desktop 3.3.3 on a Mac)
 
-(I'm using Docker Desktop 3.3.3 on a Mac)
+Yarn is avaiable locally.
 
 ## Build and deploy
 Clone the project and navigate to the root directory in your terminal of choice. Perform the following steps in order.
@@ -45,5 +45,27 @@ Docker compose
 
 ## Browse
 After building and deployment the application should be available at:
+
+[http://localhost:3000](http://localhost:3000)
+
+## Build and run without Docker
+It will be necessary to navigate into each of the **api** and **client** directories and run:
+```
+yarn
+```
+
+Run mongodb locally using your preferred approach - it might be necessary to adjust the connection string in the _api/db/index.ts_ file.
+
+From the api directory run:
+```
+npx nodemon index.ts
+```
+
+From the client directory run:
+```
+yarn start
+```
+
+After non Docker building and deployment the application should be available at:
 
 [http://localhost:3000](http://localhost:3000)

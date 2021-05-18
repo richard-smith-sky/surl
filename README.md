@@ -23,7 +23,7 @@ Get the task done as soon as you can, and upload the code onto a public git repo
 ## Pre-requisites
 A recent version of Docker is installed on your computer. (I'm using Docker Desktop 3.3.3 on a Mac)
 
-Yarn is avaiable locally.
+Yarn is available locally.
 
 ## Build and deploy
 Clone the project and navigate to the root directory in your terminal of choice. Perform the following steps in order.
